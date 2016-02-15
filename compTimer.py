@@ -1,5 +1,8 @@
+#!/usr/bin/env python
+
 import RPi.GPIO as GPIO
 import time
+import os.path
 
 GPIO.setmode(GPIO.BCM)
 
@@ -20,8 +23,14 @@ led2_gpio = 26
 GPIO.setup(led_gpio, GPIO.OUT)
 GPIO.setup(led2_gpio, GPIO.OUT)
 
+outfile = os.path.expanduser("~/LaserTimer/carTimes.txt")
+
 try: 
+
+	run = raw_input("Team and run number: ")
+	print "ready for " + run 
 	while True:
+
 		if (GPIO.input(a_pin) != gateState):
 			gateState = not gateState
 			
@@ -43,7 +52,10 @@ try:
 				stop = time.time()
 				print "second gate ..."
 				if stop - start > 0.01:
-					print "... Time: ", stop - start, "s"
+					t = stop - start
+					print "... Time: ", t , "s"
+					with open(outfile, "a") as f:
+    						f.writelines("\n" + time.asctime() + "\n" + run + ": " + "\n" + str(t))
 
 		if (GPIO.input(a_pin) == True):
 			GPIO.output(led_gpio, False)
