@@ -19,12 +19,12 @@ gateTwoState = False
 
 if (GPIO.input(a_pin) == False):
 	print "first sensor ready"
-else
+else:
 	print "check first sensor alignment"
 
 if (GPIO.input(b_pin) == False):
 	print "second sensor ready"
-else
+else:
 	print "check second sensor alignment"
 
 outfile = os.path.expanduser("~/LaserTimer/carTimes.txt")
@@ -37,18 +37,16 @@ try:
 		firstOut = False
 		while True:
 
-			if (GPIO.input(a_pin) != gateState):
-				gateState = not gateState
+			if (GPIO.input(a_pin) == True ):
 				
-				if (gateState == True and firstIn == False):
+				if (firstIn == False):
 					start = time.time()
 					print "first gate triggered"
 					firstIn = True
 					
-			if (GPIO.input(b_pin) != gateTwoState):
-				gateTwoState = not gateTwoState
+			if (GPIO.input(b_pin) == True ):
 			
-				if (gateTwoState == True and firstIn == True and firstOut == False):
+				if (firstIn == True and firstOut == False):
 					stop = time.time()
 					print "second gate ..."
 					firstOut = True
