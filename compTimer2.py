@@ -36,16 +36,13 @@ try:
 		firstIn = False 
 		firstOut = False
 		while True:
-
 			if (GPIO.input(a_pin) == True ):
-				
 				if (firstIn == False):
 					start = time.time()
 					print "first gate triggered"
 					firstIn = True
 					
 			if (GPIO.input(b_pin) == True ):
-			
 				if (firstIn == True and firstOut == False):
 					stop = time.time()
 					print "second gate ..."
