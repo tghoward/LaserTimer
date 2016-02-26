@@ -10,5 +10,5 @@ for _ in range (10):
     GPIO.output(led_gpio, not GPIO.input(led_gpio))
     sleep(1.0)
 
-GPIO.cleanup
+GPIO.cleanup()
 

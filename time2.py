@@ -3,7 +3,7 @@ import time
 
 GPIO.setmode(GPIO.BCM)
 
-a_pin = 18
+a_pin = 23 
 
 GPIO.setup(a_pin, GPIO.IN)
 
