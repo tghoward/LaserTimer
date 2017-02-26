@@ -3,6 +3,7 @@
 import RPi.GPIO as GPIO
 import time
 import os.path
+import sys
 
 GPIO.setmode(GPIO.BCM)
 
@@ -21,16 +22,18 @@ if (GPIO.input(a_pin) == False):
 	print "first sensor ready"
 else:
 	print "check first sensor alignment"
+        sys.exit(0)
 
 if (GPIO.input(b_pin) == False):
 	print "second sensor ready"
 else:
 	print "check second sensor alignment"
+        sys.exit(0)
 
 outfile = os.path.expanduser("~/LaserTimer/carTimes.txt")
 
 try: 
-	for i in range(5):
+	for i in range(10):
 		run = raw_input("Team and run number: ")
 		print "ready for " + run
 		firstIn = False 
