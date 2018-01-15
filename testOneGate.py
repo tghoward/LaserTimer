@@ -5,7 +5,7 @@ GPIO.setmode(GPIO.BCM)
 
 # this is the input pin. For the 
 # Vernier gate, this is pin 0 (DIO0)
-a_pin = 23 
+a_pin = 18 
 
 GPIO.setup(a_pin, GPIO.IN)
 
